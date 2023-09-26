@@ -15,12 +15,18 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Create
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Send
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -73,20 +79,20 @@ class MainActivity : ComponentActivity() {
             Hackathon2023Team2_1Theme {
                 val items = listOf(
                     NavigationItem(
-                        title = "All",
-                        selectedIcon = Icons.Filled.Home,
-                        unselectedIcon = Icons.Outlined.Home,
+                        title = "Profile",
+                        selectedIcon = Icons.Filled.AccountCircle,
+                        unselectedIcon = Icons.Outlined.AccountCircle,
                     ),
                     NavigationItem(
-                        title = "Urgent",
-                        selectedIcon = Icons.Filled.Info,
-                        unselectedIcon = Icons.Outlined.Info,
+                        title = "Level Up!",
+                        selectedIcon = Icons.Filled.Send,
+                        unselectedIcon = Icons.Outlined.Send,
                         badgeCount = 45
                     ),
                     NavigationItem(
-                        title = "Settings",
-                        selectedIcon = Icons.Filled.Settings,
-                        unselectedIcon = Icons.Outlined.Settings,
+                        title = "Add a Skill",
+                        selectedIcon = Icons.Filled.Create,
+                        unselectedIcon = Icons.Outlined.Create,
                     ),
                 )
                 Surface(modifier = Modifier.fillMaxSize(),

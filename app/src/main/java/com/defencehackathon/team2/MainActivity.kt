@@ -94,10 +94,17 @@ class MainActivity : ComponentActivity() {
                         selectedIcon = Icons.Filled.Create,
                         unselectedIcon = Icons.Outlined.Create,
                     ),
+                    NavigationItem(
+                        title = "Settings",
+                        selectedIcon = Icons.Filled.Settings,
+                        unselectedIcon = Icons.Outlined.Settings,
+                    ),
                 )
-                Surface(modifier = Modifier.fillMaxSize(),
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background) {
-                    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+                    val drawerState = rememberDrawerState(
+                        initialValue = DrawerValue.Closed)
                     val scope = rememberCoroutineScope()
                     var selectedItemIndex by rememberSaveable{
                         mutableStateOf(0)
@@ -105,18 +112,25 @@ class MainActivity : ComponentActivity() {
                     ModalNavigationDrawer(
                         drawerContent = {
                             ModalDrawerSheet {
-                                Spacer(modifier = Modifier.height(16.dp))
-                                items.forEachIndexed{index, item ->
+                                Spacer(
+                                    modifier = Modifier
+                                        .height(16.dp))
+                                items
+                                    .forEachIndexed{index, item ->
                                     NavigationDrawerItem(
-                                        label = { Text(text = item.title) },
+                                        label = {
+                                            Text(
+                                                text = item.title) },
                                         selected = index == selectedItemIndex,
                                         onClick = {
                                             selectedItemIndex = index
-                                            scope.launch{drawerState.close()
+                                            scope.launch{
+                                                drawerState.close()
                                             }
                                         },
                                         icon = {
-                                            Icon(imageVector = if (index == selectedItemIndex){
+                                            Icon(
+                                                imageVector = if (index == selectedItemIndex){
                                                 item.selectedIcon
                                             }else item.unselectedIcon,
                                                 contentDescription = item.title
@@ -138,7 +152,8 @@ class MainActivity : ComponentActivity() {
                             topBar = {
                                 TopAppBar(
                                     title = {
-                                        Text(text = stringResource(R.string.app_name))
+                                        Text(
+                                            text = stringResource(R.string.app_name))
                                             },
                                     navigationIcon = {
                                         IconButton(

@@ -19,7 +19,7 @@ fun MainBar(
     onNavigationIconClick:()-> Unit
 ){
     TopAppBar(title = {
-            Text(text = stringResource(R.string.app_name))
+            Text(text = "R.string.app_name)")
         },
         //backgroundColor
         //contentColor

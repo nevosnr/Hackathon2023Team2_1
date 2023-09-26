@@ -153,7 +153,7 @@ class MainActivity : ComponentActivity() {
                                 TopAppBar(
                                     title = {
                                         Text(
-                                            text = stringResource(R.string.app_name))
+                                            text = "stringResource(R.string.app_name)")
                                             },
                                     navigationIcon = {
                                         IconButton(
@@ -165,7 +165,8 @@ class MainActivity : ComponentActivity() {
                                                 contentDescription = "Menu"
                                             )
                                         }
-                                    }
+                                    },
+
                                 )
                             }
                         ) {}

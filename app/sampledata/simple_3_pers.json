@@ -1,0 +1,92 @@
+{
+"users" : [
+  {
+  "id": "Toby",
+  "interests": [],
+  "skills": [
+      {
+          "name": "Python",
+          "level": "Beginner"
+      },
+      {
+          "name": "C",
+          "level": "Intermediate"
+      },
+      {
+          "name": "Java",
+          "level": "Professional"
+      }
+  ],
+  "events": [
+      {
+          "eventid": "Hackathon2023",
+          "name": "Hackathon 2023 Attendance",
+          "description": "A great week in the cotswolds, I worked with Microsoft Azure."
+      },
+      {
+          "eventid": "Percipio",
+          "name": "Percipio Learning",
+          "description": "Follow X Link to do some percipio training. The course if 5 hours long. Email Y for a licence."
+      }
+  ],
+  "recommendations": [
+      "hack24rec",
+      "percipiorec"
+  ],
+  "_rid": "g85mAOYL9c4CAAAAAAAAAA==",
+  "_self": "dbs/g85mAA==/colls/g85mAOYL9c4=/docs/g85mAOYL9c4CAAAAAAAAAA==/",
+  "_etag": "\"f400abec-0000-1100-0000-6514017c0000\"",
+  "_attachments": "attachments/",
+  "_ts": 1695809916
+  },
+  {
+      "id": "Claire",
+      "interests": [
+          "Kayaking"
+      ],
+      "skills": [
+          {
+              "name": "Python",
+              "level": "Beginner"
+          },
+          {
+              "name": "C",
+              "level": "Intermediate"
+          },
+          {
+              "name": "Java",
+              "level": "Professional"
+          }
+      ],
+      "events": [
+          {
+              "eventid": "Hackathon2023",
+              "name": "Hackathon 2023",
+              "description": "A great week in the cotswolds, I worked with Microsoft Azure."
+          },
+          {
+              "eventid": "Percipio",
+              "name": "Percipio Learning",
+              "description": "Follow X Link to do some percipio training. The course if 5 hours long. Email Y for a licence."
+          }
+      ],
+      "recommendations": [],
+      "_rid": "g85mAOYL9c4DAAAAAAAAAA==",
+      "_self": "dbs/g85mAA==/colls/g85mAOYL9c4=/docs/g85mAOYL9c4DAAAAAAAAAA==/",
+      "_etag": "\"f40041e6-0000-1100-0000-6513ff040000\"",
+      "_attachments": "attachments/",
+      "_ts": 1695809284
+  },
+  {
+    "id": "Jon",
+    "name": "Jon",
+    "skills": [],
+    "interests": [],
+    "events": [],
+    "_rid": "g85mAOYL9c4BAAAAAAAAAA==",
+    "_self": "dbs/g85mAA==/colls/g85mAOYL9c4=/docs/g85mAOYL9c4BAAAAAAAAAA==/",
+    "_etag": "\"f400656f-0000-1100-0000-6513fc820000\"",
+    "_attachments": "attachments/",
+    "_ts": 1695808642
+  }
+]}

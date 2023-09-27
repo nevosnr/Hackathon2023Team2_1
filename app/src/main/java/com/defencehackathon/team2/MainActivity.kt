@@ -1,73 +1,42 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.defencehackathon.team2
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.Surface
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBalanceWallet
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Create
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.outlined.AccountCircle
-import androidx.compose.material.icons.outlined.Create
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material.icons.outlined.Send
-import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.filled.SportsFootball
+import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.getValue
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
-import androidx.compose.material3.NavigationDrawerItem
-import androidx.compose.material3.NavigationDrawerItemDefaults
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.PathNode
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.defencehackathon.team2.Screens.DetailScreen
+import com.defencehackathon.team2.Screens.GoalsScreen
+import com.defencehackathon.team2.Screens.MainScreen
+import com.defencehackathon.team2.Screens.ProfileScreen
+import com.defencehackathon.team2.Screens.SearchScreen
+import com.defencehackathon.team2.Screens.SettingsScreen
 import com.defencehackathon.team2.ui.theme.Hackathon2023Team2_1Theme
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 
-data class NavigationItem(
-    val title: String,
-    val selectedIcon: ImageVector,
-    val unselectedIcon: ImageVector,
-    val badgeCount: Int? = null
-)
 @OptIn(ExperimentalMaterial3Api::class)
 class MainActivity : ComponentActivity() {
 
@@ -77,104 +46,90 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Hackathon2023Team2_1Theme {
-                val items = listOf(
-                    NavigationItem(
-                        title = "Profile",
-                        selectedIcon = Icons.Filled.AccountCircle,
-                        unselectedIcon = Icons.Outlined.AccountCircle,
-                    ),
-                    NavigationItem(
-                        title = "Level Up!",
-                        selectedIcon = Icons.Filled.Send,
-                        unselectedIcon = Icons.Outlined.Send,
-                        badgeCount = 45
-                    ),
-                    NavigationItem(
-                        title = "Add a Skill",
-                        selectedIcon = Icons.Filled.Create,
-                        unselectedIcon = Icons.Outlined.Create,
-                    ),
-                    NavigationItem(
-                        title = "Settings",
-                        selectedIcon = Icons.Filled.Settings,
-                        unselectedIcon = Icons.Outlined.Settings,
-                    ),
-                )
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background) {
-                    val drawerState = rememberDrawerState(
-                        initialValue = DrawerValue.Closed)
-                    val scope = rememberCoroutineScope()
-                    var selectedItemIndex by rememberSaveable{
-                        mutableStateOf(0)
-                    }
-                    ModalNavigationDrawer(
-                        drawerContent = {
-                            ModalDrawerSheet {
-                                Spacer(
-                                    modifier = Modifier
-                                        .height(16.dp))
-                                items
-                                    .forEachIndexed{index, item ->
-                                    NavigationDrawerItem(
-                                        label = {
-                                            Text(
-                                                text = item.title) },
-                                        selected = index == selectedItemIndex,
-                                        onClick = {
-                                            selectedItemIndex = index
-                                            scope.launch{
-                                                drawerState.close()
-                                            }
-                                        },
-                                        icon = {
-                                            Icon(
-                                                imageVector = if (index == selectedItemIndex){
-                                                item.selectedIcon
-                                            }else item.unselectedIcon,
-                                                contentDescription = item.title
-                                            )
-                                        },
-                                        badge ={
-                                            item.badgeCount?.let{Text(text = item.badgeCount.toString())
-                                            }
-                                        },
-                                        modifier = Modifier
-                                            .padding(NavigationDrawerItemDefaults.ItemPadding)
-                                        )
-                                }
-                            }
-                        },
-                        drawerState = drawerState
-                    ) {
-                        Scaffold (
-                            topBar = {
-                                TopAppBar(
-                                    title = {
-                                        Text(
-                                            text = "stringResource(R.string.app_name)")
-                                            },
-                                    navigationIcon = {
-                                        IconButton(
-                                            onClick = { scope.launch {
-                                                drawerState.open() }
-                                            }) {
-                                            Icon(
-                                                imageVector = Icons.Default.Menu,
-                                                contentDescription = "Menu"
-                                            )
-                                        }
-                                    },
-
-                                )
-                            }
-                        ) {}
-                    }
-                }
+                MainNavigation()
             }
         }
     }
 }
 
+data class DrawerMenu(
+    val icon: ImageVector,
+    val title: String,
+    //val selectedIcon: ImageVector,
+    //val unselectedIcon: ImageVector,
+    //val badgeCount: Int? = null,
+    val route: String
+)
 
+enum class MainRoute(value: String) {
+    MainScreen("MainScreen"),
+    DetailsScreen("Recomendations"),
+    ProfileScreen("Profile"),
+    SearchScreen("Search"),
+    GoalsScreen("Goals"),
+    SettingsScreen("Settings")
+}
+
+val menus = arrayOf(
+    DrawerMenu(Icons.Filled.AccountCircle, "Profile Screen", MainRoute.ProfileScreen.name),
+    DrawerMenu(Icons.Filled.Search, "Search Screen", MainRoute.SearchScreen.name),
+    DrawerMenu(Icons.Filled.AccountBalanceWallet, "Search Screen", MainRoute.DetailsScreen.name),
+    DrawerMenu(Icons.Filled.SportsFootball, "Goals Screen", MainRoute.GoalsScreen.name),
+    DrawerMenu(Icons.Filled.Send, "Home Screen", MainRoute.MainScreen.name),
+    DrawerMenu(Icons.Filled.Settings, "Settings Screen", MainRoute.SettingsScreen.name),
+)
+
+@Composable
+fun MainNavigation(
+    navController: NavHostController = rememberNavController(),
+    crScope: CoroutineScope = rememberCoroutineScope(),
+    drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+) {
+    ModalNavigationDrawer(drawerState = drawerState, drawerContent = {
+        ModalDrawerSheet {
+            DrawerContent(menus = menus) { route ->
+                crScope.launch { drawerState.close() }
+                navController.navigate(route)
+
+            }
+        }
+    }) {
+        NavHost(
+            navController = navController,
+            startDestination = MainRoute.MainScreen.name
+        ) {
+            composable(
+                route = MainRoute.MainScreen.name,
+
+                ) {
+                MainScreen(drawerState)
+            }
+            composable(
+                route = MainRoute.DetailsScreen.name
+            ) {
+                DetailScreen(drawerState)
+            }
+            composable(
+                route = MainRoute.ProfileScreen.name
+            ) {
+                ProfileScreen(drawerState)
+            }
+            composable(
+                route = MainRoute.SettingsScreen.name
+            ) {
+                SettingsScreen(drawerState)
+            }
+            composable(
+                route = MainRoute.GoalsScreen.name
+            ) {
+                GoalsScreen(drawerState)
+            }
+            composable(
+                route = MainRoute.SearchScreen.name
+            ) {
+                SearchScreen(drawerState)
+            }
+        }
+
+    }
+}

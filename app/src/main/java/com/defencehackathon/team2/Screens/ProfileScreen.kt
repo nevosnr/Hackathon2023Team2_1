@@ -92,6 +92,7 @@ fun ProfileScreen(drawerState: DrawerState) {
                         modifier = Modifier.padding(10.dp)
                     ) {
                         Text(
+                            style = TextStyle(background = Color.LightGray),
                             text = "Name: ",
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold

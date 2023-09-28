@@ -19,14 +19,14 @@ fun SearchScreen(drawerState: DrawerState){
     Scaffold (
         topBar = {customAppBar(
             drawerState = drawerState,
-            title = "Recommendations Page"
+            title = "Search Page"
         )}
     ){ paddingValues ->
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(paddingValues)
         ) {
-            Text(text = "Recommendations",
+            Text(text = "Search",
                 textAlign = TextAlign.Center)
         }
     }

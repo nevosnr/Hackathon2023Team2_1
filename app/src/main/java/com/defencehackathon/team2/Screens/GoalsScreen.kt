@@ -20,7 +20,7 @@ fun GoalsScreen(drawerState: DrawerState){
     Scaffold (
         topBar = {customAppBar(
             drawerState = drawerState,
-            title = "Recommendations Page"
+            title = "Goals Page"
         )}
     ){ paddingValues ->
         Column(modifier = Modifier

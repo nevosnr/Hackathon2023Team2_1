@@ -20,7 +20,7 @@ fun SettingsScreen(drawerState: DrawerState){
     Scaffold (
         topBar = {customAppBar(
             drawerState = drawerState,
-            title = "Recommendations Page"
+            title = "Search Page"
         )}
     ){ paddingValues ->
         Column(modifier = Modifier
